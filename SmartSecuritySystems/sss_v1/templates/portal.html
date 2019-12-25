@@ -1,0 +1,46 @@
+﻿{% extends 'base.html' %}
+
+{% block navigation %}
+    {% include 'navigation.html' %}
+{% endblock %}
+
+{% block content %}
+    <div class="w-75 my-5 mx-auto">
+        <div class="jumbotron" style="background-color: #f8f9fa">
+            <p class="display-4">Portal</p>
+            <hr class="my-4" />
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'search' %}">Search</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled">Analysis</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled">Provisions</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled">Reports</a>
+                </li>
+            </ul>
+            <br />
+            <div class="alert alert-warning">Some functionality is currently unavailable.</div>
+            <p class="lead" style="font-size: 36px;">Activity</p>
+            <p>Memory utilization:</p>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 4.2%;">4.20%</div>
+            </div>
+            <br />
+            <p class="lead" style="font-size: 36px;">Billing</p>
+            <p>Budget utilization:</p>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 7.28%;">7.28%</div>
+            </div>
+            <br />
+            <button type="button" class="btn btn-secondary">Preferences</button>
+        </div>
+    </div>
+{% endblock %}

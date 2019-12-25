@@ -1,0 +1,33 @@
+﻿{% extends 'base.html' %}
+
+{% block navigation %}
+    {% include 'navigation.html' %}
+{% endblock %}
+
+{% block content %}
+
+    <div class="w-75 my-5 mx-auto">
+        <div class="jumbotron" style="background-color: #f8f9fa">
+            <p class="display-4">Upload</p>
+            <hr class="my-4" />
+
+            {% if form %}
+                <div class="alert alert-warning">The following video file types are currently supported: <strong>AVI</strong>, <strong>MP4</strong></div>
+                <p class="lead" style="font-size: 36px;">Upload Video</p>
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <button type="submit" class="btn btn-outline-secondary">Upload</button>
+                </form>
+
+            {% endif %}
+
+            {% if video %}
+                <p class="lead" style="font-size: 36px">View Sample Analytics</p>
+                <img class="rounded mx-auto d-block" src="{{video.labels.url}}" />
+            {% endif %}
+
+        </div>
+    </div>
+
+{% endblock %}

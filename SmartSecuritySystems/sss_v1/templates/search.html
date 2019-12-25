@@ -1,0 +1,78 @@
+﻿{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block navigation %}
+    {% include 'navigation.html' %}
+{% endblock %}
+
+{% block content %}
+    <div class="w-75 my-5 mx-auto">
+        <div class="jumbotron" style="background-color: #f8f9fa">
+            <p class="display-4">Portal</p>
+            <hr class="my-4" />
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'portal' %}">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active">Search</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled">Analysis</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled">Provisions</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled">Reports</a>
+                </li>
+            </ul>
+            <br />
+            <div class="alert alert-warning">Some functionality is currently unavailable.</div>
+            <form method="post">
+                {% csrf_token %}
+                {{form|crispy}}
+                <button type="submit" class="btn btn-outline-secondary">Search</button>
+            </form>
+            <br />
+
+            {% if videos %}
+                <p class="lead" style="font-size: 36px">Search Results</p>
+                {% for video in videos %}
+                    <div class="card">
+                        <div class="row no-gutters">
+                            <div class="col">
+                                <img class="card-img img-fluid" src="{{video.thumbnail.url}}">
+                            </div>
+                            <div class="col">
+                                <div class="card-body">
+                                    <h5 class="card-title">Video ID: {{video.metadata.metadata.pk}}</h5>
+                                    <p class="card-text"><small class="text-muted">Timestamp: {{video.metadata.metadata.date}}</small></p>
+                                    <p class="card-text"><small class="text-muted">Duration: {{video.metadata.metadata.duration}} seconds</small></p>
+                                    <p class="card-text"><small class="text-muted">Resolution: {{video.metadata.metadata.resolution.width}} x {{video.metadata.metadata.resolution.height}}</small></p>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card-body float-right">
+                                    <div class="btn-group" role="group">
+                                        <button type="button" class="btn btn-outline-secondary">Video</button>
+                                        <button type="button" class="btn btn-outline-secondary">Metadata</button>
+                                        <div class="btn-group" role="group">
+                                            <button id="dropdown" type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions</button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdown">
+                                                <a class="dropdown-item disabled">Analysis</a>
+                                                <a class="dropdown-item disabled">Provisions</a>
+                                                <a class="dropdown-item disabled">Reports</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+        </div>
+    </div>
+{% endblock %}

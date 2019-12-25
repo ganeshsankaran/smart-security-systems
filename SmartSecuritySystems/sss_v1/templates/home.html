@@ -1,0 +1,17 @@
+﻿{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container w-75 d-flex h-100 justify-content-center">
+        <div class="row my-auto">
+            <div class="jumbotron" style="background-color: #f8f9fa">
+                <p class="lead" style="font-size: 36px;">Optimized security footage storage, search, and analysis.</p>
+                <hr class="my-4" />
+                <div class="btn-group d-flex">
+                    <a class="btn btn-outline-secondary btn-lg w-100" href="{% url 'features' %}">Features</a>
+                    <a class="btn btn-outline-secondary btn-lg w-100" href="{% url 'upload' %}">Upload</a>
+                    <a class="btn btn-outline-secondary btn-lg w-100" href="{% url 'portal' %}">Portal</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

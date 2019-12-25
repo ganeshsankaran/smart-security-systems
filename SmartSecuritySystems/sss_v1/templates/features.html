@@ -1,0 +1,50 @@
+﻿{% extends 'base.html' %}
+
+{% block navigation %}
+    {% include 'navigation.html' %}
+{% endblock %}
+
+{% block content %}
+
+    <div class="w-75 my-5 mx-auto">
+        <div class="jumbotron" style="background-color: #f8f9fa">
+            <p class="display-4">Features</p>
+            <hr class="my-4" />
+            <div class="alert alert-warning">Some functionality is currently unavailable.</div>
+            <p class="lead" style="font-size: 36px">The Challenge</p>
+            <p>Your business stores an extraordinary amount of raw security footage which must be searched and analyzed manually. 
+                This not only results in a loss in your productivity, but also poses a threat to your business' security.</p>
+            <br />
+            <p class="lead" style="font-size: 36px">The Solution</p>
+            <p>Smart Security Systems generates metadata from several security footage streams by passing it through 
+                an extremely efficient computer vision algorithm. The metadata is much easier to store, search, and analyze 
+                compared to raw video. </p>
+            <br />
+            <div class="row-fullwidth">
+                <div class="card my-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Storage</h5>
+                        <p class="card-text">Smart Security Systems automatically generates and stores feature-rich metadata from your videos. 
+                            The memory-efficient nature of metadata means that your data can be stored securely for a long period of time.</p>      
+                    </div>
+                </div>
+                <div class="card my-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Search</h5>
+                        <p class="card-text">Smart Security Systems allows you to choose from a variety of filters and tags to 
+                            find the exact moment you are looking for. Searches are faster and more flexible thanks to the 
+                            capabilities of Elasticsearch.</p>
+                    </div>
+                </div>
+                <div class="card my-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Analysis</h5>
+                        <p class="card-text">Smart Security Systems employs an extremely quick, accurate, and customizable
+                            computer vision algorithm that can notify you of incidents. By harnessing the power of AI, 
+                            our algorithm surpasses humans in sight and memory.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

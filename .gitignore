@@ -1,0 +1,9 @@
+# Files
+.DS_Store
+
+# Folders
+/SmartSecuritySystems/SmartSecuritySystems/__pycache__/
+/SmartSecuritySystems/obj/
+/SmartSecuritySystems/sss_v1/__pycache__/
+/SmartSecuritySystems/sss_v1/migrations/__pycache__/
+/SmartSecuritySystems/static/admin/
