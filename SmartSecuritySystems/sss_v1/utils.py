@@ -9,7 +9,6 @@ from django.conf import settings
 from .models import RawVideo, Video
 
 def get_video_metadata(raw_video):
-
     # load COCO labels
     labels = open(os.path.dirname(os.path.realpath(__file__)) + '/yolov3-coco/coco-labels', 'r').read().strip().split('\n')
 
@@ -20,7 +19,6 @@ def get_video_metadata(raw_video):
     layers = [layers[uol[0] - 1] for uol in net.getUnconnectedOutLayers()]
 
     try:
-
         # try to read video file
         capture = cv2.VideoCapture(raw_video.file.path)
         metadata = {'process': {}, 'metadata': {}, 'timestamps': [], 'objects': {}}
@@ -43,7 +41,6 @@ def get_video_metadata(raw_video):
 
         # loop over intervals of time
         while timestamp <= numpy.floor(duration):
-
             # set video position and read a frame
             capture.set(cv2.CAP_PROP_POS_FRAMES, int(timestamp * fps))
             loaded, frame = capture.read()
@@ -103,7 +100,6 @@ def get_video_metadata(raw_video):
         return metadata
 
 def get_video_thumbnail(raw_video):
-
     capture = cv2.VideoCapture(raw_video.file.path)
     loaded, frame = capture.read()
 
@@ -111,12 +107,10 @@ def get_video_thumbnail(raw_video):
 
     path = os.path.join(settings.MEDIA_ROOT, 'thumbnail' + str(raw_video.pk) + '.png')
     cv2.imwrite(path, thumbnail)
+    
     return 'thumbnail' + str(raw_video.pk) + '.png'
 
-
-
 def get_video_labels(metadata):
-
     x = []
     y = []
 
@@ -124,11 +118,11 @@ def get_video_labels(metadata):
 
     for i, object in enumerate(metadata['objects']):
         labels.append(object)
+        
         for timestamp in metadata['objects'][object]:
             x.append(timestamp)
             y.append(i)
     
-
     plt.scatter(x, y, color='b', alpha=0.75)
     plt.title('Objects Detected')
     plt.xlabel('Timestamp (s)')
@@ -136,10 +130,5 @@ def get_video_labels(metadata):
 
     path = os.path.join(settings.MEDIA_ROOT, 'labels' + str(metadata['metadata']['pk']) + '.png')
     plt.savefig(path)
+
     return 'labels' + str(metadata['metadata']['pk']) + '.png'
-
-
-    
-    
-
-

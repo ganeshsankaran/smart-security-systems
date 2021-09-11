@@ -4,10 +4,10 @@ from django.contrib.auth.models import User
 from .models import RawVideo
 
 class RawVideoForm(forms.ModelForm):
-	class Meta:
-		model = RawVideo
-		fields = ['file']
-		labels = {'file': ''}
+    class Meta:
+        model = RawVideo
+        fields = ['file']
+        labels = {'file': ''}
 
 class SearchForm(forms.Form):
     label = forms.CharField(max_length=30)
@@ -34,4 +34,5 @@ class UserForm(UserCreationForm):
 
         if commit:
             user.save()
+        
         return user

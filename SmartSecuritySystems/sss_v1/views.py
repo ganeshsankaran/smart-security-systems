@@ -5,20 +5,16 @@ from .models import RawVideo, Video
 from .utils import get_video_metadata, get_video_thumbnail, get_video_labels
 
 def features(request):
-
     return render(request, 'features.html', {'user': request.user})
 
 def home(request):
-
     return render(request, 'home.html')
 
 @login_required
 def portal(request):
-    
     return render(request, 'portal.html', {'user': request.user})
 
 def register(request):
-
     if request.method == 'POST':
         form = UserForm(request.POST)
 
@@ -33,7 +29,6 @@ def register(request):
 
 @login_required
 def search(request):
-
     if request.method == 'POST':
         form = SearchForm(request.POST)
 
@@ -49,7 +44,6 @@ def search(request):
 
 @login_required
 def upload(request):
-
     if request.method == 'POST':
         form = RawVideoForm(request.POST, request.FILES)
 
